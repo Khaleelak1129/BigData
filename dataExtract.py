@@ -15,8 +15,8 @@ class DataLoader:
             response.raise_for_status()  
             data = response.json() 
             return data
-        except Exception as e:
-            print("Error fetching data:", e)
+        except Exception as err:
+            print("Error getting data:", err)
             return None
         
     def load_data_to_redis(self,data, redis_host=None, redis_port=None,redis_username = None,redis_password = None, redis_db=None):
@@ -111,13 +111,13 @@ if __name__ == "__main__":
     dl = DataLoader()
     url = "https://apis-ugha.onrender.com/books"
     data = dl.fetch_data_from_api(url)
-    print("extracted data successfully")
+    print("data extracted successfully")
 
     # Load data into Redis
-    redis_host = 'redis-15378.c326.us-east-1-3.ec2.cloud.redislabs.com'
-    redis_port = 15378  # Your Redis Cloud port
-    redis_password = 'yagna'  # Your Redis Cloud password
-    redis_db = 'Yagna-free-db' 
+    redis_host = 'redis-15834.c322.us-east-1-2.ec2.cloud.redislabs.com'
+    redis_port = 15834  # Your Redis Cloud port
+    redis_password = 'Khaleel@Db1129'  # Your Redis Cloud password
+    redis_db = 'DataBase001' 
     username = 'default'
     dl.load_data_to_redis(data,redis_host=redis_host,
                           redis_port=redis_port,
