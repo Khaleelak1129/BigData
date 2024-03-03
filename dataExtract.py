@@ -1,9 +1,59 @@
+'''
+Author: Khaleel Mohamed
+submission Date: 02-03-2024
+'''
+
+
 import requests
 import redis
 import json
 import matplotlib.pyplot as plt
 
+"""
+    Initializes a DataLoader object.
+      Parameters:
+      - RedisAPI (str): The Redis API key, if needed.
+    
+    
+    Fetches data from a given API endpoint.
+      Parameters:
+      - url (str): The URL of the API endpoint.
+      - headers (dict): Optional headers for the API request.
 
+      Returns:
+      - dict: The retrieved JSON data from the API.
+
+      Raises:
+      - Exception: If an error occurs during the API request.
+
+    Loads data into a Redis database.
+      Parameters:
+      - data (dict): The data to be stored in Redis.
+      - redis_host (str): The Redis host address.
+      - redis_port (int): The Redis port number.
+      - redis_username (str): The Redis username (if applicable).
+      - redis_password (str): The Redis password (if applicable).
+      - redis_db (str): The Redis database name.
+
+      Raises:
+      - Exception: If an error occurs during the data loading process.
+      
+
+    Reads data from a Redis database.
+      Parameters:
+      - redis_host (str): The Redis host address.
+      - redis_port (int): The Redis port number.
+      - redis_username (str): The Redis username (if applicable).
+      - redis_password (str): The Redis password (if applicable).
+      - redis_db (str): The Redis database name.
+
+      Returns:
+      - dict: The retrieved data from Redis.
+
+      Raises:
+      - Exception: If an error occurs during the data reading process.
+     
+"""
 
 class DataLoader:
     def __init__(self,RedisAPi=""):
@@ -35,7 +85,6 @@ class DataLoader:
         except Exception as e:
             print("Error loading data into Redis:", e)
             
-
     
     def read_data_from_redis(self, redis_host=None, redis_port=None, redis_username=None, redis_password=None, redis_db=None):
         try:
@@ -55,6 +104,25 @@ class DataLoader:
         except Exception as e:
             print("Error reading data from Redis:", e)
             return None
+
+"""
+    Initializes an Analytics object.
+      Parameters:
+      - data (dict): The data for analytics.
+
+
+    Searches for books containing the provided name in their title.
+      Parameters:
+      - book_name (str): The name to search for in book titles.
+
+      Returns:
+      - list: A list of books matching the search criteria.
+
+  
+     Plots a histogram based on the specified variable.
+       Parameters:
+       - variable (str): The variable for which to create a histogram.
+"""
 
 class Analytics:
     def __init__(self, data):
@@ -90,6 +158,20 @@ class Analytics:
         plt.title(title)
         plt.grid(True)
         plt.show()
+
+    """
+        Aggregates data based on the specified variable.
+
+        Parameters:
+        - variable (str): The variable for which to perform aggregation.
+
+        Returns:
+        - float: The aggregated value.
+
+        Notes:
+        - Currently supports "availability" and "price" variables.
+        - Additional cases can be added for different variables.
+    """
 
     def aggregate(self, variable):
         if variable == "availability":
