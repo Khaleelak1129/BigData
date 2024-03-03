@@ -191,15 +191,15 @@ class Analytics:
 
 if __name__ == "__main__":
     dl = DataLoader()
-    url = "https://apis-ugha.onrender.com/books"
+    url = "https://api-osc9.onrender.com/books"
     data = dl.fetch_data_from_api(url)
     print("data extracted successfully")
 
     # Load data into Redis
-    redis_host = 'redis-15834.c322.us-east-1-2.ec2.cloud.redislabs.com'
-    redis_port = 15834  # Your Redis Cloud port
-    redis_password = 'Khaleel@Db1129'  # Your Redis Cloud password
-    redis_db = 'DataBase001' 
+    redis_host = 'redis-13369.c238.us-central1-2.gce.cloud.redislabs.com'
+    redis_port = 13369  # Your Redis Cloud port
+    redis_password = 'Khaleel'  # Your Redis Cloud password
+    redis_db = 'RedisDatabase' 
     username = 'default'
     dl.load_data_to_redis(data,redis_host=redis_host,
                           redis_port=redis_port,
